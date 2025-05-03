@@ -44,22 +44,25 @@ const AddAddress = () => {
 
 
 
-    const onSubmitHandler = async (e)=>{
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('/api/address/add', { ...address, userId: user._id });
-
-
-            if(data.success){
-                toast.success(data.message)
-                navigate('/cart')
-            }else{
-                toast.error(data.message)
-            }
+          const { data } = await axios.post('/api/address/add', {
+            address, // 👈 Send address inside an object
+            userId: user._id,
+          });
+      
+          if (data.success) {
+            toast.success(data.message);
+            navigate('/cart');
+          } else {
+            toast.error(data.message);
+          }
         } catch (error) {
-            toast.error(error.message)
+          toast.error(error.message);
         }
-    }
+      };
+      
 
     useEffect(()=>{
         if(!user){
