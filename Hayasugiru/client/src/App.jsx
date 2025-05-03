@@ -21,6 +21,7 @@ import Orders from './pages/seller/Orders'
 import AddProduct from './pages/seller/AddProduct'
 import Loading from './components/Loading'
 
+axios.defaults.withCredentials = true;
 
 const App = () => {
 
