@@ -13,9 +13,12 @@ const Login = () => {
     try {
         event.preventDefault();
 
-        const {data} = await axios.post(`/api/user/${state}`,{
-            name, email, password
-        });
+        const { data } = await axios.post(
+          `/api/user/${state}`,
+          { name, email, password },
+          { withCredentials: true } // ✅ this is the fix
+        );
+        
 
         if(data.success){
             navigate('/')
